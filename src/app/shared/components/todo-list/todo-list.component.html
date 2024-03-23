@@ -7,13 +7,12 @@
             {{todo.todoItem}}
         </strong>
         <span class="float-right">
-            <button mat-mini-fab color="primary" class="mr-2" 
-            (click)="onEdit(todo)" 
-            aria-label="Example icon button with a delete icon">
+            <button mat-mini-fab color="primary" class="mr-2" (click)="onEdit(todo)"
+                aria-label="Example icon button with a delete icon">
                 <mat-icon>edit</mat-icon>
-              </button>
+            </button>
             <button mat-mini-fab color="warn" (click)="onDelete(todo)"
-            aria-label="Example icon button with a delete icon">
+                aria-label="Example icon button with a delete icon">
                 <mat-icon>delete</mat-icon>
             </button>
         </span>
@@ -22,8 +21,8 @@
 
 <ng-template #noTodo>
     <p class="alert alert-warning font p-4">
-       <strong>
-        No TodoItem added yet !!!
-       </strong>
+        <strong>
+            No TodoItem Added Yet !!!
+        </strong>
     </p>
 </ng-template>

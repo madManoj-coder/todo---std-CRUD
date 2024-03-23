@@ -10,7 +10,6 @@ import { SnackbarService } from '../../services/snackbar.service';
 })
 export class TodoListComponent implements OnInit {
   todoArr !: Array<Itodo>;
-  // isEditMode: boolean = false;
   todoItem !: string;
   constructor(
     private _todoService: TodoService,
@@ -19,7 +18,6 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoArr = this._todoService.fetchAllTodo()
-
   }
 
   onEdit(todo: Itodo) {

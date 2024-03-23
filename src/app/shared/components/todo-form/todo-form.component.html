@@ -11,10 +11,10 @@
             </div>
             <div class="text-right">
                 <button *ngIf="!isInEditMode"
-                class="btn alert-primary btn-primary"  [disabled]="todoForm.invalid" 
+                class="btn alert-primary btn-outline-primary"  [disabled]="todoForm.invalid" 
                 color="primary">Add TODO</button>
                 <button *ngIf="isInEditMode" type="button"
-                (click)="onUpdate()"
+                (click)="onUpdate()" 
                 mat-raised-button [disabled]="todoForm.invalid" 
                 color="accent">Update TODO</button>
             </div>

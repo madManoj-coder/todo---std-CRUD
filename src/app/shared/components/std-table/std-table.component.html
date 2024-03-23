@@ -1,1 +1,47 @@
-<p>std-table works!</p>
+<h2 class="text-center linear">Student Table</h2>
+<div class="table-responsive">
+    <table class="table table-bordered" *ngIf="stdArr.length > 0;else noStd">
+        <thead>
+            <tr>
+                <th>Sr.No</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Contact</th>
+                <th>
+                    Edit
+                </th>
+                <th>
+                    Remove
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let std of stdArr; index as i">
+                <td>{{i + 1}}</td>
+                <td>{{std.fname}}</td>
+                <td>{{std.lname}}</td>
+                <td>{{std.email}}</td>
+                <td>{{std.contact}}</td>
+                <td>
+                    <button mat-mini-fab color="primary" class="mr-2"
+                        (click)="onEdit(std)"
+                        aria-label="Example icon button with a delete icon">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </td>
+                <td>
+                    <button mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #noStd>
+    <p class="alert-warning p-4 font">
+        No Student Added Yet !!!
+    </p>
+</ng-template>
