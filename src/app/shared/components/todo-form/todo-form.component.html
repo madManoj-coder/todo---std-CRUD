@@ -1,0 +1,23 @@
+<h2 class="text-center linear">
+    Todo Form
+</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="todoForm" (ngSubmit)="onTodoSubmit()">
+            <div class="form-group">
+                <label for="todoItem" class="todo"><strong>Todo Item</strong></label>
+                <input formControlName="todoItem" type="text" id="todoItem" class="form-control">
+            </div>
+            <div class="text-right">
+                <button *ngIf="!isInEditMode"
+                class="btn alert-primary btn-primary"  [disabled]="todoForm.invalid" 
+                color="primary">Add TODO</button>
+                <button *ngIf="isInEditMode" type="button"
+                (click)="onUpdate()"
+                mat-raised-button [disabled]="todoForm.invalid" 
+                color="accent">Update TODO</button>
+            </div>
+        </form>
+    </div>
+</div>

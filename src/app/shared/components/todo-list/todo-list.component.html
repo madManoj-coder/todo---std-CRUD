@@ -1,0 +1,29 @@
+<h2 class="text-center linear">
+    Todo List
+</h2>
+<ul class="list-group" *ngIf="todoArr.length > 0; else noTodo">
+    <li class="list-group-item" *ngFor="let todo of todoArr">
+        <strong class="todoItem">
+            {{todo.todoItem}}
+        </strong>
+        <span class="float-right">
+            <button mat-mini-fab color="primary" class="mr-2" 
+            (click)="onEdit(todo)" 
+            aria-label="Example icon button with a delete icon">
+                <mat-icon>edit</mat-icon>
+              </button>
+            <button mat-mini-fab color="warn" (click)="onDelete(todo)"
+            aria-label="Example icon button with a delete icon">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </span>
+    </li>
+</ul>
+
+<ng-template #noTodo>
+    <p class="alert alert-warning font p-4">
+       <strong>
+        No TodoItem added yet !!!
+       </strong>
+    </p>
+</ng-template>
