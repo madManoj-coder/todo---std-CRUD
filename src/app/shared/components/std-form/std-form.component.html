@@ -20,9 +20,11 @@
             </div>
             <div class="text-right">
                 <button class="alert-primary btn btn-outline-primary"
-                [disabled]="stdForm.invalid"
+                [disabled]="stdForm.invalid" *ngIf="!isInEditMode"
                 >Add Student</button>
-                <button (click)="onUpdateStd()" *ngIf="isInEditMode"
+
+                <button (click)="onUpdateStd()" 
+                *ngIf="isInEditMode" [disabled]="stdForm.invalid"
                 class="alert-warning btn btn-outline-warning" type="button">
                 Update Student</button>
             </div>

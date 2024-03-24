@@ -31,7 +31,7 @@ export class TodoListComponent implements OnInit {
     if (getConfirmation) {
       this._todoService.removeTodo(todo)
       this.todoItem = todo.todoItem
-      this._snackBarService.openSnackBar(`${this.todoItem} is deleted successfully !!!`)
+      this._snackBarService.openSnackBar(`${this.todoItem} is removed successfully !!!`)
     }
   }
 

@@ -12,7 +12,9 @@ import { Istd } from '../../model/std';
 })
 export class StdFormComponent implements OnInit {
   stdForm !: FormGroup;
-  isInEditMode : boolean = false;
+  isInEditMode: boolean = false;
+  isEditStd !: Istd;
+
   constructor(
     private _uuidService: UuidService,
     private _stdService: StdService,
@@ -21,6 +23,12 @@ export class StdFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createStdForm();
+    this._stdService.editAndUpdStd$
+      .subscribe(res => {
+          this.isEditStd = res;
+          this.isInEditMode = true;
+          this.stdForm.patchValue(res);
+      })
   }
 
   createStdForm() {
@@ -36,13 +44,20 @@ export class StdFormComponent implements OnInit {
     if (this.stdForm.valid) {
       let stdObj = { ...this.stdForm.value, id: this._uuidService.generateUUID() }
       console.log(stdObj);
-      this._stdService.stdSubject$.next(stdObj)
+      this._stdService.addStd(stdObj)
       this.stdForm.reset()
       this._snackBarService.openSnackBar(`New student ${stdObj.fname} ${stdObj.lname} is added successfully !!!`)
     }
   }
 
   onUpdateStd() {
+    if (this.stdForm.valid) {
+      let updatedStd = { ...this.stdForm.value, id : this.isEditStd.id}
+      this._stdService.updateStd(updatedStd);
+      this.stdForm.reset();
+      this.isInEditMode = false;
+      this._snackBarService.openSnackBar(`Student ${updatedStd.fname} ${updatedStd.lname} is updated successfully !!!`)
+    }
   }
 
 }

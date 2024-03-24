@@ -17,33 +17,29 @@ export class StdService {
     }
   ]
 
-
-  stdSubject$: Subject<Istd> = new Subject()
-  stdEditAndUpdate$: Subject<Istd> = new Subject()
-
+  editAndUpdStd$: Subject<Istd> = new Subject()
   constructor() {
-    this.stdSubject$
-      .subscribe(std => {
-        console.log(std);
-        this.stdArray.push(std)
-      })
-
-    this.stdEditAndUpdate$
-      .subscribe(updateStd => {
-        console.log();
-        for (let i = 0; i < this.stdArray.length; i++) {
-          if (this.stdArray[i].id === updateStd.id) {
-            this.stdArray[i] = updateStd
-          }
-        }
-      })
   }
 
   fetchAllStds(): Array<Istd> {
     return this.stdArray;
   }
 
-  // onEditAndUpd(updateStd: Istd) {
+  addStd(std: Istd) {
+    this.stdArray.push(std)
+  }
 
-  // }
+  updateStd(updatedStd: Istd) {
+    for (let i = 0; i < this.stdArray.length; i++) {
+      if (this.stdArray[i].id === updatedStd.id) {
+        this.stdArray[i] = updatedStd
+      }
+    }
+  }
+
+  removeStd(removeStd: Istd) {
+    let getIndex = this.stdArray.findIndex(std => std.id === removeStd.id)
+    this.stdArray.splice(getIndex, 1)
+  }
+
 }
